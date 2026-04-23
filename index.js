@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
     try {
         const resp = await axios.get(vehiclesUrl, { headers });
         const data = resp.data.results;
-        res.render('homepage', { title: 'Vehicles Inventory | HubSpot APIs', data });      
+        res.render('homepage', { title: 'Vehicles Inventory | Integrating With HubSpot I Practicum', data });      
     } catch (error) {
         console.error(error);
     }
@@ -34,12 +34,38 @@ app.get('/', async (req, res) => {
 
 // * Code for Route 2 goes here
 app.get('/update-cobj', async (req, res) => {
-    res.render('update', { title: 'Update Vehicle | HubSpot APIs' });
+    res.render('update', { title: 'Update Vehicles Form | Integrating With HubSpot I Practicum' });
 });
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
 // * Code for Route 3 goes here
+app.post('/update-cobj', async (req, res) => {
+    const update = {
+        properties: {
+            "name": `[${req.body.license_plate}] ${req.body.brand} ${req.body.model}`, 
+            "license_plate": req.body.license_plate,
+            "brand": req.body.brand,
+            "model": req.body.model,
+            "color": req.body.color,
+            "year": req.body.year
+        }
+    }
+
+    const updateVehicle = `https://api.hubapi.com/crm/v3/objects/2-228630224`;
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    };
+
+    try { 
+        await axios.post(updateVehicle, update, { headers } );
+        res.redirect('/');
+    } catch(err) {
+        console.error(err);
+    }
+
+});
 
 /** 
 * * This is sample code to give you a reference for how you should structure your calls. 

@@ -6,14 +6,11 @@ html
     body
         .form-wrapper
             h1= title
-            a(href="/") return
+            a(href="/") Return to the homepage
             hr
             form(method="POST")
-                abel(for="name") Name
-                input(type="text" name="name" required)
-
-                label(for="license-plate") License Plate
-                input(type="text" name="license-plate" required)
+                label(for="license_plate") License Plate
+                input(type="text" name="license_plate" required)
                 
                 label(for="brand") Brand
                 select(name="brand")
