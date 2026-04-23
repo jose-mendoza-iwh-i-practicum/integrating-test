@@ -1,0 +1,32 @@
+doctype html
+html 
+    head 
+        title= title
+        link(rel="stylesheet", href="/css/style.css")
+    body    
+        h1 Vehicles Inventory | HubSpot APIs
+        .nav
+            a(href="/update-cobj") + add new vehicle
+        
+        table
+            thead
+                tr
+                    th Name
+                    th License plate
+                    th Brand
+                    th Model
+                    th Color
+                    th Year
+            tbody
+                if data && data.length > 0
+                    each vehicle in data
+                        tr
+                            td #{vehicle.properties.name}
+                            td #{vehicle.properties.license_plate}
+                            td #{vehicle.properties.brand}
+                            td #{vehicle.properties.model}
+                            td #{vehicle.properties.color}
+                            td #{vehicle.properties.year}
+                else
+                    tr
+                        td(colspan="6") Vehicles not found.
