@@ -3,11 +3,14 @@
 body, * {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    background-color: #f4f7f9;
+    color: #33475b;
 }
 
 h1 {
-    margin: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .cards {
@@ -49,10 +52,22 @@ label, input {
 input[type="text"] {
     padding: .25rem;
 }
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cbd6e2;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
 
 input[type="submit"] {
-    background-color: lightgrey;
+    background-color: rgb(242, 124, 6);
     border: none;
     padding: .375rem 1rem;
     margin-top: 10px;
+    font-weight: bold;
+    color: white;
 }
